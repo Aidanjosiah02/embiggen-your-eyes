@@ -1,9 +1,8 @@
-import React, { useState, createContext, useContext } from 'react'
-
-const MarkerContext = createContext();
-const MarkerContextUpdate = createContext();
+import React, { useState } from 'react';
+import { MarkerContext, MarkerContextUpdate } from './ContextHook';
 
 export function Context({ children }) {
+
     const [markerCollection, setMarkerCollection] = useState([])
 
     function updateMarkerCollection() {
@@ -14,15 +13,7 @@ export function Context({ children }) {
         <MarkerContext.Provider value={markerCollection}>
             <MarkerContextUpdate.Provider value={updateMarkerCollection}>
                 {children}
-            </ MarkerContextUpdate.Provider>
-        </ MarkerContext.Provider>
+            </MarkerContextUpdate.Provider>
+        </MarkerContext.Provider>
     )
-}
-
-export function useMarkerCollection() {
-    return useContext(MarkerContext)
-}
-
-export function useMarkerCollectionUpdate() {
-    return useContext(MarkerContextUpdate)
 }

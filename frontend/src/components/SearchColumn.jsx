@@ -1,7 +1,7 @@
 import { useState } from "react";
 import './styles/SearchColumn.css';
-import { useMarkerCollection, useMarkerCollectionUpdate } from "../context/Context.js";
-import SearchEntry from './SearchEntry'
+//import { useMarkerCollection, useMarkerCollectionUpdate } from "../context/Context";
+//import SearchEntry from './SearchEntry'
 
 export default function SearchColumn() {
     // Pulling the global marker collection & its setter
