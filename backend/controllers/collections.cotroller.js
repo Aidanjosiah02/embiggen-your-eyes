@@ -32,7 +32,7 @@ export const saveCollection = async (req, res) => {
   try {
     const { data, error } = await supabase
       .from("collections")
-      .insert([{ name, map }])
+      .insert([{ name}])
       .select()
       .single();
 
