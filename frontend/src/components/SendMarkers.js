@@ -1,5 +1,6 @@
 async function sendMarkers(markers) {
     try {
+        console.log('Sending markers to server:', markers);
         const response = await fetch('http://localhost:3000/api/markers/saveMarkers', {
             method: 'POST',
             headers: {
@@ -7,6 +8,7 @@ async function sendMarkers(markers) {
             },
             body: JSON.stringify(markers),
         });
+        console.log('Server response:', response);
         if (!response.ok) {
             throw new Error(`Server error: ${response.statusText}`);
         }

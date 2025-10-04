@@ -9,7 +9,7 @@ export default function SearchColumn() {
     const [queryEmpty, setQueryEmpty] = useState(false)
 
     // local results state
-    const [results, setResults] = useState([{lat: 39, lng: 40, name: "somename", description: "somedescription", zoom: 10, collection: "somecollection", map: "somemap"}])
+    const [results, setResults] = useState([])
 
 
     // handle form submit
@@ -53,11 +53,6 @@ export default function SearchColumn() {
     function testFunc(entry) {
         console.log("Recieved from entry " + entry)
     }
-
-    // Logs only when results change
-    useEffect(() => {
-        console.log("Results updated:", results);
-    }, [results]);
 
     // Convert all the markers into UI entries
     const entries = results.map(marker => {

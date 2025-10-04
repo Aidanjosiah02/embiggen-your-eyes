@@ -9,7 +9,7 @@ function AddMarker() {
   useMapEvents({
     click(event) {
       console.log(event)
-      const newMarker = {lat: event.latlng.lat, lng: event.latlng.lng, name: "somename", description: "somedescription", zoom: map.getZoom(), collection: "somecollection", map: "somemap"};
+      const newMarker = {lat: event.latlng.lat, lng: event.latlng.lng, name: "somename", description: "somedescription", zoom: map.getZoom(), collection: "99b3c955-1f43-444f-9e8f-67d1d48ad47f"};
       setMarkers((prevMarkers) => [...prevMarkers, newMarker]);
     },
   });
