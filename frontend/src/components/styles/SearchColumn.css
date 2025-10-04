@@ -1,0 +1,12 @@
+.search-bar {
+  flex: 0 0 20%;
+  height: 100%;
+
+  background-color: #21222A;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  box-sizing: border-box;
+  box-shadow: #444 0px 2px 4px;
+}
