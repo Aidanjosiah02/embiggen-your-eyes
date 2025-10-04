@@ -31,7 +31,6 @@ async function main() {
 
  
 
-  console.log(supabase);
 
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
