@@ -1,7 +1,7 @@
 async function sendMarkers(useMarkers) {
     const markerCollection = useMarkers
     try {
-      const response = await fetch('http://localhost:5000/api/markers/savemarkers', {
+      const response = await fetch('http://localhost:3000/api/markers/savemarkers', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

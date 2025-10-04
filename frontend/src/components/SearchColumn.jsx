@@ -1,7 +1,7 @@
 import { useState } from "react";
 import './styles/SearchColumn.css';
 import {useMarkers, useMarkerUpdate} from '../context/ContextHook'
-//import SearchEntry from './SearchEntry'
+import SearchEntry from './SearchEntry'
 
 export default function SearchColumn() {
     // Pulling the global marker collection & its setter
@@ -10,7 +10,7 @@ export default function SearchColumn() {
 
     // Convert all the markers into UI entries
     const entries = (markers || []).map(each => {
-        return <SearchEntry title="" image="" description="" /> // DOES NOTHING YET
+        return <SearchEntry entry="test" /> // DOES NOTHING YET
     })
 
     // query state

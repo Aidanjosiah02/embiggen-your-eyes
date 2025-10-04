@@ -1,9 +1,7 @@
 /* :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Alan Sans, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -23,3 +21,8 @@
     background-color: #f9f9f9;
   }
 } */
+
+/* Just fonts */
+:root {
+  font-family: Alan Sans, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}

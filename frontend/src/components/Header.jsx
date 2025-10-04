@@ -1,10 +1,10 @@
-import './Header.css'
+import "./styles/Header.css"
 export default function Header(){
     
     return(
-        <header>
-            <h1>Something</h1>
-            <img src="frontend/public/vite.svg" alt="placeholder" />
+        <header className="header">
+            <img src="https://cdn-icons-png.flaticon.com/512/124/124567.png" alt="placeholder" />
+            <h1>GalaxSight</h1>
         </header>
     )
 }

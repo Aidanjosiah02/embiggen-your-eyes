@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import { MarkerContext, MarkerContextUpdate } from './ContextHook';
+import { MarkersContext, MarkersContextUpdate } from './ContextHook';
 
 export function Context({ children }) {
 
-    const [markerCollection, setMarkerCollection] = useState([])
+    const [markers, setMarkers] = useState([])
 
-    function updateMarkerCollection() {
-        setMarkerCollection(prevCollection => prevCollection) // DOES NOTHING YET
+    function updateMarkers() {
+        setMarkers(prevMarkers => prevMarkers) // DOES NOTHING YET
     }
 
     return (
-        <MarkerContext.Provider value={markerCollection}>
-            <MarkerContextUpdate.Provider value={updateMarkerCollection}>
+        <MarkersContext.Provider value={markers}>
+            <MarkersContextUpdate.Provider value={updateMarkers}>
                 {children}
-            </MarkerContextUpdate.Provider>
-        </MarkerContext.Provider>
+            </MarkersContextUpdate.Provider>
+        </MarkersContext.Provider>
     )
 }

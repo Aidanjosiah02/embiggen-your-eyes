@@ -1,13 +1,13 @@
 import { createContext, useContext } from 'react';
 
 // For providers
-export const MarkerContext = createContext();
-export const MarkerContextUpdate = createContext();
+export const MarkersContext = createContext();
+export const MarkersContextUpdate = createContext();
 
 // For consumers
 export function useMarkers() {
-    return useContext(MarkerContext)
+    return useContext(MarkersContext)
 }
 export function useMarkerUpdate() {
-    return useContext(MarkerContextUpdate)
+    return useContext(MarkersContextUpdate)
 }
