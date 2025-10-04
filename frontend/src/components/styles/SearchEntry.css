@@ -1,0 +1,10 @@
+.search-entry {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    transition: background-color .2s;
+}

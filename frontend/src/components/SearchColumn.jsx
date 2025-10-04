@@ -1,16 +1,16 @@
 import { useState } from "react";
 import './styles/SearchColumn.css';
-import { useMarkerCollection, useMarkerCollectionUpdate } from "../context/Context.js";
+import {useMarkers, useMarkerUpdate} from '../context/ContextHook'
 import SearchEntry from './SearchEntry'
 
 export default function SearchColumn() {
     // Pulling the global marker collection & its setter
-    const markerCollection = useMarkerCollection()              // Currently doing nothing
-    const setMarkerCollection = useMarkerCollectionUpdate()
+    const markers = useMarkers()              // Currently doing nothing
+    const setMarkers = useMarkerUpdate()
 
     // Convert all the markers into UI entries
-    const entries = markerCollection.map(each => {
-        return <SearchEntry title="" image="" description="" /> // DOES NOTHING YET
+    const entries = (markers || []).map(each => {
+        return <SearchEntry entry="" onClick={testFunc}/> // DOES NOTHING YET
     })
 
     // query state
@@ -21,6 +21,15 @@ export default function SearchColumn() {
         e.preventDefault();
         console.log('Searching for:', query);
         // Contact the back end here..................................
+    }
+
+    // Testing a search entry
+    const testObject = {
+        name: "Earth",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxn_lBa1HfLMPA8K6BPwsU8BSz2I7ozIF0xQ&s"
+    }
+    function testFunc() {
+        console.log("Recieved from entry")
     }
 
     return (
@@ -36,7 +45,10 @@ export default function SearchColumn() {
                 <button type="submit">Find</button>
             </form>
             <div className="search-results">
-                {query.length !== 0 && entries}
+                {markers.length !== 0 && entries}
+                
+                {/* Testing searchEntry */}
+                <SearchEntry entry={testObject} onClick={testFunc} />
             </div>
         </div>
     )
