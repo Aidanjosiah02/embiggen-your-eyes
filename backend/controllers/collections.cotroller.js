@@ -1,7 +1,46 @@
-import { Pool } from "../config/db.js";
+// backend/controllers/collections.controller.js
+import { supabase } from "../config/supabase.js";
 
-const { rows } = await pool.query(
-  "SELECT * FROM markers WHERE planet_name = $1",
-  ["Mars"]
-);
-console.log(rows);
+/**
+ * GET /api/collection
+ * Fetch all collections
+ */
+export const getCollection = async (_req, res) => {
+  try {
+    const { data, error } = await supabase.from("collections").select("*");
+
+    if (error) throw error;
+
+    res.json(data);
+  } catch (error) {
+    console.error("Error fetching collections:", error);
+    res.status(500).json({ error: "Failed to fetch collections" });
+  }
+};
+
+/**
+ * POST /api/collection
+ * Body: { name: string, map: string }
+ */
+export const saveCollection = async (req, res) => {
+  const { name, map } = req.body;
+
+  if (!name || !map) {
+    return res.status(400).json({ error: "name and map are required" });
+  }
+
+  try {
+    const { data, error } = await supabase
+      .from("collections")
+      .insert([{ name, map }])
+      .select()
+      .single();
+
+    if (error) throw error;
+
+    res.status(201).json(data);
+  } catch (error) {
+    console.error("Error saving collection:", error);
+    res.status(500).json({ error: "Failed to save collection" });
+  }
+};
