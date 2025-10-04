@@ -1,6 +1,6 @@
-function getMarkers(req, res) {
-  db.collection("markers").find();
+function getCollection(req, res) {
+  db.collection("collection").find();
 }
 
 //req is an array of markers?
-function saveMarkers(req, res) {}
+function saveCollection(req, res) {}
