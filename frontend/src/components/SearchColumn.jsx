@@ -10,7 +10,7 @@ export default function SearchColumn() {
 
     // Convert all the markers into UI entries
     const entries = (markers || []).map(each => {
-        return <SearchEntry entry="test" /> // DOES NOTHING YET
+        return <SearchEntry entry="" onClick={testFunc}/> // DOES NOTHING YET
     })
 
     // query state
@@ -21,6 +21,15 @@ export default function SearchColumn() {
         e.preventDefault();
         console.log('Searching for:', query);
         // Contact the back end here..................................
+    }
+
+    // Testing a search entry
+    const testObject = {
+        name: "Earth",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxn_lBa1HfLMPA8K6BPwsU8BSz2I7ozIF0xQ&s"
+    }
+    function testFunc() {
+        console.log("Recieved from entry")
     }
 
     return (
@@ -37,6 +46,9 @@ export default function SearchColumn() {
             </form>
             <div className="search-results">
                 {markers.length !== 0 && entries}
+                
+                {/* Testing searchEntry */}
+                <SearchEntry entry={testObject} onClick={testFunc} />
             </div>
         </div>
     )
