@@ -5,8 +5,24 @@ export function getMarkers(req, res) {
 
 //req is an array of markers?
 export function saveMarkers(req, res) {
-  console.log("Received: ", req.body);
-  res.status(200).send("Markers saved");
+  const {lat, lng, name, zoom, description, collection} = req.body
+
+  try{
+    const{data, err } = supabase.from("markets")
+    .insert([{name: name,
+      lat: lat,
+      lng: lng,
+      zoom: zoom,
+      description: description,
+      collection: collection
+    }])
+    .select()
+    .single();
+    if (err) throw err;
+  }catch(err){
+  console.error("Error saving collection:", err.message);
+    res.status(500).json({ error: "Failed to save collection" });
+  }
 }
 
 export function getMarkersById(){
