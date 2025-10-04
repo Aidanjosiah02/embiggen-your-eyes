@@ -11,13 +11,11 @@ export function Context({ children }) {
     }
 
     return (
-        <>
-            <MarkerContext.Provider value={markerCollection}>
-                <MarkerContextUpdate value={updateMarkerCollection}>
-                    {children}
-                </ MarkerContextUpdate>
-            </ MarkerContext.Provider>
-        </>
+        <MarkerContext.Provider value={markerCollection}>
+            <MarkerContextUpdate.Provider value={updateMarkerCollection}>
+                {children}
+            </ MarkerContextUpdate.Provider>
+        </ MarkerContext.Provider>
     )
 }
 

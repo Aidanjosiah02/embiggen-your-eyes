@@ -1,5 +1,5 @@
 import { useState } from "react";
-import './component_styles/SearchColumn.css';
+import './styles/SearchColumn.css';
 import { useMarkerCollection, useMarkerCollectionUpdate } from "../context/Context.js";
 import SearchEntry from './SearchEntry'
 
