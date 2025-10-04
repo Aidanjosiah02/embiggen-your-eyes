@@ -7,7 +7,6 @@ import {
   getMarkersById,
   getMarkersByCollection,
   getMarkersByName,
-  getMarkersByCollection
 } from "../controllers/markers.controller.js";
 
 const markersRouter = Router();

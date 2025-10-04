@@ -1,3 +1,4 @@
+import { supabase } from "../services/database-connection.service.js";
 export function getMarkers(req, res) {
   
 }
@@ -29,10 +30,10 @@ export async function getMarkersByCollectionOrName(req, res) {
     let query = supabase.from("markers").select("*");
 
     // build dynamic query based on which value is present
-    if (collection && collection !== "null") {
+    if (collection !== undefined && collection !== null && collection !== "null") {
       query = query.eq("collection", collection);
     }
-    if (name && name !== "null") {
+    if (name !==undefined && name!=null && name!=="null") {
       query = query.eq("name", name);
     }
 
