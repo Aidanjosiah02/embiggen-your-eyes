@@ -1,9 +1,9 @@
 import { Router } from "express";
 import { getMarkers, saveMarkers } from "../controllers/markers.controller.js";
 
-const router = Router();
+const markersRouter = Router();
 
-router.get("/getMarkers", getMarkers); //Get all markers from database using collection name
-router.post("/saveMarkers", saveMarkers); //Save all markers from frontend in database
+markersRouter.get("/getMarkers", getMarkers); //Get all markers from database using collection name
+markersRouter.post("/saveMarkers", saveMarkers); //Save all markers from frontend in database
 
-export default router;
+export default markersRouter;
