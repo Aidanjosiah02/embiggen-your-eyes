@@ -1,6 +1,5 @@
 import express from "express";
-import { connectToDatabase } from "./services/database-connection.service.js";
-import { disconnectFromDatabase } from "./services/database-connection.service.js";
+// import supabase from "./services/database-connection.service.js";
 
 main().catch((error) => {
   console.error("Error starting the application:", error);
@@ -18,8 +17,8 @@ async function main() {
   //   app.use("/collection", collections.router);
   //   app.use("/markers");
 
-  console.log("DATABASE CONNECTION");
-  connectToDatabase();
+  //   console.log("DATABASE CONNECTION");
+  //   const db = supabase;
 
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

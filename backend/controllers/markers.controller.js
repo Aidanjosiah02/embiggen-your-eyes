@@ -1,6 +1,7 @@
-function getCollection(req, res) {
-  db.collection("collection").find();
-}
+function getMarkers(req, res) {}
 
 //req is an array of markers?
-function saveCollection(req, res) {}
+function saveMarkers(req, res) {
+  console.log("Received: ", req.body);
+  res.status(200).send("Markers saved");
+}
