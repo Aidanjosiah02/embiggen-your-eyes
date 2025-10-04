@@ -5,9 +5,17 @@ export function getMarkers(req, res) {
 
 //req is an array of markers?
 export async function saveMarkers(req, res) {
-  const {lat, lng, name, zoom, description, collection} = req.body
+  const markers = req.body.body;
 
   try{
+    const formatted = markers.map(m => ({
+      name: m.name,
+      lat: m.lat,
+      lng: m.lng,
+      zoom: m.zoom,
+      description: m.description,
+      collection_id: m.collection,
+    }))
     const{data, error } = await supabase.from("markers")
     .insert([{name: name,
       lat: lat,
