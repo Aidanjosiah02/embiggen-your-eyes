@@ -1,4 +1,6 @@
 import express from "express";
+import { connectToDatabase } from "./config/database.js";
+import { disconnectFromDatabase } from "./config/database.js";
 
 main.catch((error) => {
   console.error("App can not run. Error:", error);
@@ -18,4 +20,7 @@ function main() {
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
   });
+
+  console.log();
+  connectToDatabase();
 }
