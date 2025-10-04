@@ -3,11 +3,11 @@ import React, { useState, createContext, useContext } from 'react'
 const MarkerContext = createContext();
 const MarkerContextUpdate = createContext();
 
-export function ContextProvider({ children }) {
+export function Context({ children }) {
     const [markerCollection, setMarkerCollection] = useState([])
 
     function updateMarkerCollection() {
-        setMarkerCollection(prevCollection => prevCollection)
+        setMarkerCollection(prevCollection => prevCollection) // DOES NOTHING YET
     }
 
     return (

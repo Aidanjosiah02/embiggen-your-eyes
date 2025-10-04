@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Leaflet from './components/Leaflet'
-import { ContextProvider } from './Context/ContextProvider'
+// import { ContextProvider } from './context/Context'
 
 import './App.css'
 
@@ -8,9 +8,9 @@ function App() {
 
   return (
     <>
-      <ContextProvider>
+      {/* <Context> */}
         <Leaflet />
-      </ContextProvider>
+      {/* </Context> */}
     </>
   )
 }
