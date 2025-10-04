@@ -1,3 +1,4 @@
+import "./styles/SearchEntry.css"
 export default function SearchEntry({ entry, onClick }) {
     return (
         <div className="search-entry" onClick={() => onClick(entry)}>

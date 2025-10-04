@@ -1,6 +1,6 @@
 import { useState } from "react";
 import './styles/SearchColumn.css';
-import {useMarkers, useMarkerUpdate} from '../context/ContextHook'
+import { useMarkers, useMarkerUpdate } from '../context/ContextHook'
 import SearchEntry from './SearchEntry'
 
 export default function SearchColumn() {
@@ -8,29 +8,39 @@ export default function SearchColumn() {
     const markers = useMarkers()              // Currently doing nothing
     const setMarkers = useMarkerUpdate()
 
-    // Convert all the markers into UI entries
-    const entries = (markers || []).map(each => {
-        return <SearchEntry entry="" onClick={testFunc}/> // DOES NOTHING YET
-    })
-
     // query state
     const [query, setQuery] = useState("")
+    const [queryEmpty, setQueryEmpty] = useState(false)
 
     // handle form submit
     const handleSearch = (e) => {
         e.preventDefault();
-        console.log('Searching for:', query);
-        // Contact the back end here..................................
+
+        if (query === "") {
+            setQueryEmpty(true);
+            return;
+        }
+
+        setQueryEmpty(false);
+
+        const testObject = {
+            id: Date.now(),
+            name: "Earth",
+            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxn_lBa1HfLMPA8K6BPwsU8BSz2I7ozIF0xQ&s"
+        };
+
+        setMarkers(prev => [...prev, testObject]);
+        setQuery(""); // Clear input
     }
 
-    // Testing a search entry
-    const testObject = {
-        name: "Earth",
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxn_lBa1HfLMPA8K6BPwsU8BSz2I7ozIF0xQ&s"
-    }
     function testFunc() {
         console.log("Recieved from entry")
     }
+
+    // Convert all the markers into UI entries
+    const entries = markers.map(item => {
+        return <SearchEntry key={item.id} entry={item} onClick={testFunc} /> // DOES NOTHING YET
+    })
 
     return (
         <div className="search-bar">
@@ -46,9 +56,7 @@ export default function SearchColumn() {
             </form>
             <div className="search-results">
                 {markers.length !== 0 && entries}
-                
-                {/* Testing searchEntry */}
-                <SearchEntry entry={testObject} onClick={testFunc} />
+                {queryEmpty && <h2>Please enter in the search bar</h2>}
             </div>
         </div>
     )
