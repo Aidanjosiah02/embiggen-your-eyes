@@ -8,6 +8,7 @@ header {
   align-items: center;
   height: 55px;
   margin-bottom: 20px;
+  font-size: 2rem;
 }
 
 header > img {
