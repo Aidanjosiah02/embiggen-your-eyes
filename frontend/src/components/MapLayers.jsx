@@ -1,5 +1,5 @@
 import { LayersControl, TileLayer } from 'react-leaflet';
-// import { useMarkerCollection, useMarkerCollectionUpdate } from '../context/Context';
+import { useMarkers, useMarkerUpdate } from '../context/ContextHook';
 
 const { BaseLayer } = LayersControl;
 

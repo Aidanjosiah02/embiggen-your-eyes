@@ -1,15 +1,15 @@
 import { useState } from "react";
 import './styles/SearchColumn.css';
-//import { useMarkerCollection, useMarkerCollectionUpdate } from "../context/Context";
+import {useMarkers, useMarkerUpdate} from '../context/ContextHook'
 //import SearchEntry from './SearchEntry'
 
 export default function SearchColumn() {
     // Pulling the global marker collection & its setter
-    const markerCollection = useMarkerCollection()              // Currently doing nothing
-    const setMarkerCollection = useMarkerCollectionUpdate()
+    const markers = useMarkers()              // Currently doing nothing
+    const setMarkers = useMarkerUpdate()
 
     // Convert all the markers into UI entries
-    const entries = markerCollection.map(each => {
+    const entries = (markers || []).map(each => {
         return <SearchEntry title="" image="" description="" /> // DOES NOTHING YET
     })
 
@@ -36,7 +36,7 @@ export default function SearchColumn() {
                 <button type="submit">Find</button>
             </form>
             <div className="search-results">
-                {query.length !== 0 && entries}
+                {markers.length !== 0 && entries}
             </div>
         </div>
     )
