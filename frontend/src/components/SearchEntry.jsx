@@ -30,7 +30,7 @@ export default function SearchEntry({marker}) {
     return (
         <div className="search-entry" onClick={() => setGlobalMarkers((prevMarkers) => [...prevMarkers, marker])}>
             <img className="search-image" src={marker.image} alt="Search Image" />
-            <h3>{marker.name}</h3>           {/* Title */}
+            <h3>{marker.name}</h3>
         </div>
     );
 }

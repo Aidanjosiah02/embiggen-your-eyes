@@ -6,7 +6,6 @@ export default function SearchColumn() {
 
     // markerQuery state
     const [markerQuery, setMarkerQuery] = useState("")
-    const [collectionQuery, setCollectionQuery] = useState("")
 
     // local results state
     const [results, setResults] = useState([])
@@ -77,7 +76,7 @@ export default function SearchColumn() {
             </form>
             <div className="search-results">
                 {entries}
-                {(!markerQuery && !collectionQuery) && <h2>Please enter in the search bar</h2>}
+                {!markerQuery && <h2>Please enter in the search bar</h2>}
             </div>
         </div>
     )

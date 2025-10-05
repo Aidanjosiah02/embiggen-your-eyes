@@ -4,7 +4,7 @@ import L from 'leaflet';
 import './styles/leaflet.css';
 import { useState } from 'react';
 import MapLayers from './MapLayers.jsx'; // Adjust path as needed
-import AddMarker from './addMarker.jsx';
+import AddMarker from './AddMarker.jsx';
 
 // Setup default marker icon
 delete L.Icon.Default.prototype._getIconUrl;

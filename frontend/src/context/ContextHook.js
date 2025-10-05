@@ -1,13 +1,25 @@
 import { createContext, useContext } from 'react';
 
-// For providers
+// Marker Contexts
 export const MarkersContext = createContext();
 export const MarkersContextUpdate = createContext();
 
-// For consumers
+// Collection Contexts
+export const CollectionsContext = createContext();
+export const CollectionsContextUpdate = createContext();
+
+// Marker Hooks
 export function useMarkers() {
-    return useContext(MarkersContext)
+    return useContext(MarkersContext);
 }
 export function useMarkerUpdate() {
-    return useContext(MarkersContextUpdate)
+    return useContext(MarkersContextUpdate);
+}
+
+// Collection Hooks
+export function useCollections() {
+    return useContext(CollectionsContext);
+}
+export function useCollectionsUpdate() {
+    return useContext(CollectionsContextUpdate);
 }
