@@ -8,7 +8,13 @@ export default async function getQuery(query) {
             const name = query.name
 
             console.log(queryParams.toString())
-            const response = await fetch(`http://localhost:3000/api/markers/getMarkers/${collectionId}/${name}`, {
+            // const response = await fetch(`http://localhost:3000/api/markers/getMarkers/${collectionId}/${name}`, {
+            //     method: 'GET',
+            //     headers: {
+            //         'Accept': 'application/json',
+            //     },
+            // });
+            const response = await fetch(`http://localhost:3000/api/markers/getMarkers?collectionId=${collectionId}&name=${name}`, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',

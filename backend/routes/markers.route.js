@@ -12,13 +12,11 @@ import {
 const markersRouter = Router();
 
 // existing routes
-markersRouter.get("/getMarkers", getMarkers); // get all markers
 markersRouter.post("/saveMarkers", saveMarkers); // save markers
-
-
+markersRouter.get("/getMarkers", getMarkersByCollectionOrName);
 markersRouter.get("/getMarkers/:id", getMarkersById);
 markersRouter.get("/getMarkers/colllection/:collectionId", getMarkersByCollection);
 markersRouter.get("/getMarkers/name/:name", getMarkersByName);
-markersRouter.get("/getMarkers/:collection/:name", getMarkersByCollectionOrName);
+
 
 export default markersRouter;
