@@ -5,31 +5,31 @@ export function getMarkers(req, res) {
 
 //req is an array of markers?
 export async function saveMarkers(req, res) {
-  const markers = req.body.body;
+  const markers = req.body;
+  console.log("Markers to save:", markers);
 
-  try{
-    const formatted = markers.map(m => ({
-      name: m.name,
-      lat: m.lat,
-      lng: m.lng,
-      zoom: m.zoom,
-      description: m.description,
-      collection_id: m.collection,
-    }))
-    const{data, error } = await supabase.from("markers")
-    .insert([{name: name,
-      lat: lat,
-      lng: lng,
-      zoom: zoom,
-      description: description,
-      collection_id: collection
-    }])
-    .select()
-    .single();
+  try {
+    const formatted = markers.map((m, index) => {
+      return {
+        name: m.name,
+        lat: m.lat,
+        lng: m.lng,
+        zoom: m.zoom,
+        description: m.description,
+        collection_id: m.collection,
+      };
+    });
+
+    const { data, error } = await supabase
+      .from("markers")
+      .insert(formatted)
+      .select();
+
     if (error) throw error;
-    res.status(200).json(data)
-  }catch(err){
-  console.error("Error saving collection:", err.message);
+
+    res.status(200).json(data);
+  } catch (err) {
+    console.error("Error saving collection:", err.message);
     res.status(500).json({ error: "Failed to save collection" });
   }
 }
