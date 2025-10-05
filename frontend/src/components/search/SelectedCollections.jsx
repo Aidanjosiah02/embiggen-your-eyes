@@ -34,20 +34,21 @@ export default function SelectedCollections() {
 
     // React component
     return (
-        <div className="selected-collections">
-            <div className='select-collection-container'>
-                <h4>Selected Collections</h4>
-                <button onClick={clearAll}>Clear All</button>
-            </div>
-            <ul>
-                {collections.map((collection) => (
-                    <li key={collection.id} className="collection-item">
-                        <span>{collection.name}</span>
-                        <button onClick={() => handleRemove(collection.id)}>Remove</button>
-                        <button onClick={() => handleEdit(collection)}>Edit</button>
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
+    <div className="selected-collections results-scroll">
+      {!collections.length && <p className="muted">No collections selected yet</p>}
+      {!!collections.length && (
+        <ul>
+          {collections.map((collection) => (
+            <li key={collection.id} className="collection-item">
+              <span>{collection.name}</span>
+              <div className="row-actions">
+                <button className="button--ghost" onClick={() => handleEdit(collection)}>Edit</button>
+                <button className="button--danger" onClick={() => handleRemove(collection.id)}>Remove</button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
 }

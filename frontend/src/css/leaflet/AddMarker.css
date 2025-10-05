@@ -1,48 +1,13 @@
-/* These CSS are currently USELESS right now */
-
-/* edit-popup {
-    width: 300px;
+.add-marker-hint {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(20, 26, 43, 0.85);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  pointer-events: none;
+  font-size: 0.9rem;
 }
-
-.edit-popup form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-} 
-
-.edit-popup label {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.edit-popup input, .edit-popup textarea {
-    padding: 8px;
-    font-size: 1rem;
-    width: 100%;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-.edit-popup button {
-    margin-top: 10px;
-    padding: 10px;
-    font-size: 1rem;
-    border: none;
-    background-color: #4CAF50;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.edit-popup button:hover {
-    background-color: #45a049;
-}
-
-#cancel-btn {
-    background-color: #f44336;
-}
-
-#cancel-btn:hover {
-    background-color: #e53935;
-}
- */
