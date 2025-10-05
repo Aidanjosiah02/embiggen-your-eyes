@@ -62,7 +62,9 @@ function AddMarker() {
   // Return Marker component
   return (
     <>
-      {markers.map((position, idx) => (
+      {markers.map((position, idx) => {
+        console.log(markers)
+        return(
         <Marker
           key={idx}
           position={[position.lat, position.lng]}
@@ -106,7 +108,7 @@ function AddMarker() {
             }
           </Popup>
         </Marker>
-      ))}
+      )})}
     </>
   );
 }
