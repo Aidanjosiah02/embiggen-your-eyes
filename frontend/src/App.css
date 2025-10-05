@@ -6,3 +6,7 @@
   margin: 0;
   padding: 0;
 }
+
+.please-enter, .no-result {
+  color: rgb(255, 58, 58);
+}

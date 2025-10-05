@@ -31,19 +31,25 @@ function Leaflet() {
   const position = [51.505, -0.09];
 
   const [selectedMarker, setSelectedMarker] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
 
   return (
     <MapContainer className='leaflet-map' center={position} zoom={3}>
       <LayersControl position="topright">
         <MapLayers layerDetails={layerDetails} />
       </LayersControl>
+
       <AddMarker 
         selectedMarker={selectedMarker}
         setSelectedMarker={setSelectedMarker}
+        isEditing={isEditing} // ✅ Pass isEditing
       />
+
       <MarkerOverlayBox 
         selectedMarker={selectedMarker}
         setSelectedMarker={setSelectedMarker}
+        isEditing={isEditing}
+        setIsEditing={setIsEditing} // ✅ Let MarkerOverlayBox control editing state
       />
     </MapContainer>
   );

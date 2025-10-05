@@ -7,9 +7,14 @@ import getCollection from './getCollection.js'
 import SelectedCollections from "./SelectedCollections.jsx";
 
 export default function SearchCollection() {
+  // Global state
   const [collectionName, setCollectionName] = useState('');
   const [collections, setCollections] = useState([]);
 
+  // Local state
+  const [searched, setSearched] = useState(false)
+
+  // handle create collection
   async function createCollection(e) {
     e.preventDefault();
 
@@ -29,6 +34,7 @@ export default function SearchCollection() {
     e.preventDefault();
 
     if (!collectionName.trim()) {
+      setSearched(true);
       return;
     }
 
@@ -37,8 +43,8 @@ export default function SearchCollection() {
     console.log("Searching for: ", normQuery);
 
     try {
-      const result = await getCollection({ collection: normQuery, name: null });
-      
+      const result = await getCollection({ collection: null, name: normQuery });
+
       // // Optional: Score and sort (if needed)
       // const scored = result.map((collection) => {
       //   const name = collection.name?.toLowerCase() ?? '';
@@ -54,6 +60,7 @@ export default function SearchCollection() {
       // .sort((a, b) => b.score - a.score);
 
       setCollections(result); // Update state to trigger re-render through entries
+      setSearched(true)
     } catch (error) {
       console.error("Error fetching collection:", error);
     }
@@ -61,7 +68,7 @@ export default function SearchCollection() {
 
   // Dummy function
   function testFunc(entry) {
-      console.log("Recieved from entry " + entry)
+    console.log("Recieved from entry " + entry)
   }
 
   // Convert all the markers into UI entries
@@ -84,9 +91,9 @@ export default function SearchCollection() {
 
       <div className="search-results">
         {entries}
-        {!collectionName && <h2>Please enter in the search bar</h2>}
+        {searched && !collectionName && <h2 className="please-enter">Please enter in the search bar</h2>}
       </div>
       <SelectedCollections />
     </div>
-  );
+  ); 
 }

@@ -1,17 +1,43 @@
 import { Marker, useMapEvents, useMap } from 'react-leaflet';
 import { useMarkers, useMarkerUpdate, useSelectedCollection } from '../context/ContextHook.js';
-import "./styles/AddMarker.css"
+import { useEffect } from 'react';
+import "./styles/AddMarker.css";
 
-function AddMarker({ selectedMarker, setSelectedMarker }) {
+function AddMarker({ selectedMarker, setSelectedMarker, isEditing }) {
   const markers = useMarkers();
   const setMarkers = useMarkerUpdate();
   const map = useMap();
   const collection = useSelectedCollection();
 
+  // Enable/disable map interactions
+  useEffect(() => {
+    if (isEditing) {
+      map.dragging.disable();
+      map.scrollWheelZoom.disable();
+      map.doubleClickZoom.disable();
+      map.boxZoom.disable();
+      map.keyboard.disable();
+
+      if (map.tap) map.tap.disable(); // mobile tap zoom
+
+      map.touchZoom.disable();
+    } else {
+      map.dragging.enable();
+      map.scrollWheelZoom.enable();
+      map.doubleClickZoom.enable();
+      map.boxZoom.enable();
+      map.keyboard.enable();
+
+      if (map.tap) map.tap.enable();
+
+      map.touchZoom.enable();
+    }
+  }, [isEditing, map]);
+
+  // 📍 Only allow placing markers when not editing
   useMapEvents({
     click(event) {
-      // 💡 Don't add marker if editing
-      if (selectedMarker) return;
+      if (isEditing || selectedMarker) return;
 
       const newMarker = {
         lat: event.latlng.lat,
@@ -21,6 +47,8 @@ function AddMarker({ selectedMarker, setSelectedMarker }) {
         zoom: map.getZoom(),
         collection: collection.id
       };
+
+      console.log(newMarker)
 
       setMarkers((prevMarkers) => [...prevMarkers, newMarker]);
     },
