@@ -64,6 +64,6 @@ export async function getMarkersByCollectionOrName(req, res) {
     res.status(200).json({ ok: true, data });
   } catch (err) {
     console.error("Error fetching markers:", err);
-    res.status(500).json({ ok: false, error: err.message });
+    res.status(500).send({ ok: false, error: err.message });
   }
 }
