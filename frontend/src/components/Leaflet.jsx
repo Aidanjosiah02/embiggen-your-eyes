@@ -5,6 +5,7 @@ import './styles/leaflet.css';
 import { useState } from 'react';
 import MapLayers from './MapLayers.jsx'; // Adjust path as needed
 import AddMarker from './AddMarker.jsx';
+import MarkerOverlayBox from './MarkerOverlayBox.jsx';
 
 // Setup default marker icon
 delete L.Icon.Default.prototype._getIconUrl;
@@ -26,15 +27,24 @@ function Leaflet() {
     }
   ]);
 
+
   const position = [51.505, -0.09];
+
+  const [selectedMarker, setSelectedMarker] = useState(null);
 
   return (
     <MapContainer className='leaflet-map' center={position} zoom={3}>
       <LayersControl position="topright">
         <MapLayers layerDetails={layerDetails} />
       </LayersControl>
-      {/* <SearchToggleButton setShowSearch={setShowSearch} /> */}
-      <AddMarker />
+      <AddMarker 
+        selectedMarker={selectedMarker}
+        setSelectedMarker={setSelectedMarker}
+      />
+      <MarkerOverlayBox 
+        selectedMarker={selectedMarker}
+        setSelectedMarker={setSelectedMarker}
+      />
     </MapContainer>
   );
 }

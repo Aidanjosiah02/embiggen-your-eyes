@@ -4,6 +4,7 @@ import SearchEntry from './SearchEntry';
 import sendCollection from "./sendCollection";
 import CollectionEntry from './CollectionEntry'
 import getCollection from './getCollection.js'
+import SelectedCollections from "./SelectedCollections.jsx";
 
 export default function SearchCollection() {
   const [collectionName, setCollectionName] = useState('');
@@ -85,6 +86,7 @@ export default function SearchCollection() {
         {entries}
         {!collectionName && <h2>Please enter in the search bar</h2>}
       </div>
+      <SelectedCollections />
     </div>
   );
 }

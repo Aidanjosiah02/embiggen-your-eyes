@@ -12,7 +12,6 @@ export default async function getQuery(query) {
                     'Accept': 'application/json',
                 },
             });
-
             // console.log(response)
 
             if (!response.ok) {
