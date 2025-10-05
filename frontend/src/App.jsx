@@ -6,6 +6,7 @@ import { Context } from './context/Context'
 // import sendMarkers from './components/sendMarkers.js'
 import Header from './components/Header.jsx'
 import SubmitMarkers from './components/SubmitMarkers.jsx'
+import SearchCollection from './components/SearchCollection.jsx'
 
 import './App.css'
 
@@ -21,6 +22,7 @@ function App() {
           <Leaflet />
           <SearchColumn />
           <SubmitMarkers />
+          <SearchCollection />
         </main>
       </Context>
     </>
