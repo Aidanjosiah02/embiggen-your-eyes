@@ -3,7 +3,7 @@ import './styles/SearchColumn.css';
 import SearchEntry from './SearchEntry';
 import sendCollection from "./sendCollection";
 import CollectionEntry from './CollectionEntry'
-import getQuery from './getQuery.js'
+import getCollection from './getCollection.js'
 
 export default function SearchCollection() {
   const [collectionName, setCollectionName] = useState('');
@@ -24,34 +24,38 @@ export default function SearchCollection() {
   }
 
   // handle form submit
-  function handleSearch(e) {
+  async function handleSearch(e) {
     e.preventDefault();
 
     if (!collectionName.trim()) {
-      // Clear collections (optional – you could choose not to reset here)
       return;
     }
 
-    console.log("Searching for: ", collectionName);
-
     const normQuery = collectionName.toLowerCase();
 
-    getQuery({"collection": normQuery, "name": null})
+    console.log("Searching for: ", normQuery);
 
-    const scored = collections.map((collection) => {
-      const name = collection.name.toLowerCase();
-      let score = 0;
+    try {
+      const result = await getCollection({ collection: normQuery, name: null });
+      
+      // // Optional: Score and sort (if needed)
+      // const scored = result.map((collection) => {
+      //   const name = collection.name?.toLowerCase() ?? '';
+      //   let score = 0;
 
-      if (name === normQuery) score = 3;
-      else if (name.startsWith(normQuery)) score = 2;
-      else if (name.includes(normQuery)) score = 1;
+      //   if (name === normQuery) score = 3;
+      //   else if (name.startsWith(normQuery)) score = 2;
+      //   else if (name.includes(normQuery)) score = 1;
 
-      return { ...collection, score };
-    })
-    .filter((collection) => collection.score > 0)
-    .sort((a, b) => b.score - a.score);
+      //   return { ...collection, score };
+      // })
+      // .filter((collection) => collection.score > 0)
+      // .sort((a, b) => b.score - a.score);
 
-    setCollections(scored);  // Update the collections list with sorted results
+      setCollections(result); // Update state to trigger re-render through entries
+    } catch (error) {
+      console.error("Error fetching collection:", error);
+    }
   }
 
   // Dummy function

@@ -106,15 +106,15 @@ const { collection_id } = req.params;
 
 
 export async function getMarkersByCollectionOrName(req, res) {
-  const { collection, name } = req.params;
-  console.log("Request params:", { collection, name });
+  const { collectionId, name } = req.params;
+  console.log("Request params:", { collectionId, name });
 
   try {
     let query = supabase.from("markers").select("*");
 
     
-    if (collection && collection !== "null") {
-      query = query.eq("collection_id", collection);
+    if (collectionId && collectionId !== "null") {
+      query = query.eq("collection_id", collectionId);
     }
 
     if (name && name !== "null") {

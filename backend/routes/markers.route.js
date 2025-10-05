@@ -17,7 +17,7 @@ markersRouter.post("/saveMarkers", saveMarkers); // save markers
 
 
 markersRouter.get("/getMarkers/:id", getMarkersById);
-markersRouter.get("/getMarkers/colllection/:collection", getMarkersByCollection);
+markersRouter.get("/getMarkers/colllection/:collectionId", getMarkersByCollection);
 markersRouter.get("/getMarkers/name/:name", getMarkersByName);
 markersRouter.get("/getMarkers/:collection/:name", getMarkersByCollectionOrName);
 
