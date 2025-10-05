@@ -71,26 +71,42 @@ export default function SearchMarker() {
 
     // Convert all the markers into UI entries
     const entries = results.map(marker => {
-        return <SearchEntry key={marker.id} marker={marker} onClick={testFunc} />
+        return <SearchEntry key={marker.id ?? `${marker.lat}-${marker.lng}`} marker={marker} onClick={testFunc} />
     })
 
     return (
-        <div className="search-bar">
-            {/* Search input */}
-            <form className="search-controls" onSubmit={handleSearch}>
-                <input
-                    type="text"
-                    value={markerQuery}
-                    placeholder="Enter marker name..."
-                    onChange={(e) => setMarkerQuery(e.target.value)}>
-                </input>
-                <button type="submit">Find</button> 
-            </form>
-            <div className="search-results">
-                {entries}
-                {searched && !markerQuery && <h2 className="please-enter">Please enter in the search bar</h2>}
-                {searched && markerQuery && results.length === 0 && <h2 className="no-result">No results found</h2>}
-            </div>
+    <>
+      {/* ★ CHANGE: single compact row (no big sidebar card wrapper) */}
+      <form className="sidebar-row" onSubmit={handleSearch}>
+        <input
+          type="text"
+          value={markerQuery}
+          placeholder="Search Bar"
+          onChange={(e) => setMarkerQuery(e.target.value)}
+        />
+        <button type="submit">Find</button>
+      </form>
+
+      {/* ★ NEW: render results off-screen, then move them into the middle panel */}
+      <div style={{ display: 'none' }}>
+        <div id="__markers-results">
+          {entries}
+          {searched && !markerQuery && <h4 className="muted">Please enter in the search bar</h4>}
+          {searched && markerQuery && results.length === 0 && <h4 className="muted">No results found</h4>}
         </div>
-    )
+      </div>
+    </>
+  );
+}
+
+/* ★ NEW: move rendered DOM into the middle panel mount point */
+if (typeof window !== 'undefined') {
+  queueMicrotask(() => {
+    const src = document.getElementById('__markers-results');
+    const dst = document.getElementById('markers-results-mount');
+    if (src && dst) {
+      while (dst.firstChild) dst.removeChild(dst.firstChild);
+      while (src.firstChild) dst.appendChild(src.firstChild);
+    }
+  });
 }

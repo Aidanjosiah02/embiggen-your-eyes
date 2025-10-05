@@ -1,4 +1,23 @@
-.leaflet-map {
-  height: 80vh;
-  width: 100%;
+/* Leaflet control theming only */
+
+.leaflet-control-container .leaflet-control {
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+
+.leaflet-bar a,
+.leaflet-bar a:hover {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+.leaflet-bar a:hover { filter: brightness(1.08); }
+
+.leaflet-control-layers-expanded {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text);
 }

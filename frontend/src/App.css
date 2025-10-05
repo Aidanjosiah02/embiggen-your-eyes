@@ -1,12 +1,166 @@
+/* src/App.css */
+
+/* Layout */
 .main {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  /* ★ UPDATED: remove gap between sidebar sections */
+  gap: 0;
   width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
+  height: calc(100vh - var(--header-h));
+  padding: var(--gap);
+  margin: 0 auto;
+  max-width: 1600px;
 }
 
-.please-enter, .no-result {
-  color: rgb(255, 58, 58);
+/* Map container */
+.map-wrap {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+
+/* Map fills its wrapper */
+.leaflet-map {
+  height: 100%;
+  width: 100%;
+  border: none;
+  box-shadow: none;
+}
+
+/* Sidebar layout */
+.sidebar {
+  display: grid;
+  grid-template-rows: auto auto 1fr 1fr;
+  height: 100%;
+  min-height: 0;
+  gap: 0;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  /* ensures seamless edges */
+
+}
+
+.sidebar>*+* {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  /* subtle divider */
+}
+
+
+/* Compact search rows (kept tight) */
+.sidebar-row {
+  display: flex;                    /* ★ CHANGE: flexbox instead of grid */
+  flex-wrap: wrap;                  /* ★ NEW: allows wrapping for long labels */
+  align-items: center;
+  /* handles longer labels */
+  gap: 8px;
+  background: transparent;
+  /* matches the sidebar frame */
+  border: none;
+  /* handled by sidebar + separator */
+  border-radius: 0;
+  padding: 10px 12px;
+  /* small padding, more space for results */
+  box-shadow: none;
+}
+
+/* ★ NEW: first and second rows rounded only at top */
+.sidebar-row:first-of-type {
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+}
+
+.sidebar-row:nth-of-type(2) {
+  border-bottom: none;
+  /* merges with next section */
+}
+
+/* Input always takes available space */
+.sidebar-row input {
+  flex: 1;
+  min-width: 140px;                /* ★ NEW: keeps input readable even if narrow */
+}
+
+/* Buttons stay side by side, wrap when needed */
+.sidebar-row button {
+  white-space: nowrap;             /* prevents breaking words in half */
+  flex-shrink: 0;
+}
+
+
+/* Results panels */
+.results-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: #0f1630;       /* slight contrast block (like your mock) */
+  border: none;              /* separator is drawn by .sidebar > * + * */
+  border-radius: 0;
+  padding: 10px 12px;
+  box-shadow: none;
+}
+
+.results-panel:first-of-type {
+  border-top: none;
+}
+
+.results-panel:last-of-type {
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+}
+
+.results-panel h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  color: var(--text);
+  text-align: center;
+}
+
+.results-scroll {
+  overflow: auto;
+  min-height: 0;
+}
+
+/* Utility */
+.muted {
+  color: var(--muted);
+}
+
+/* ★ UPDATED: Move Submit Marker button to top center */
+.submit-marker {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+/* Optional: avoid button wrapping for longer labels */
+button { white-space: nowrap; }
+
+/* === Keep Fetch & Create side-by-side === */
+.collection-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: nowrap;        /* ★ prevents wrapping */
+  justify-content: flex-end; /* aligns them neatly to the right */
+}
+.collection-buttons button {
+  white-space: nowrap;      /* ensures full text fits without breaking */
+}
+
+
+/* If you want them to stack perfectly when small: */
+@media (max-width: 480px) {
+  .sidebar-row button {
+    flex: 1 1 100%;               /* ★ NEW: buttons go full width on small screens */
+  }
 }
