@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Leaflet from "./components/app/Leaflet.jsx";
+import LeafletGIBS from "./components/app/LeafletGIBS.jsx";
 import SearchMarkers from "./components/app/SearchMarkers.jsx";
 import { Context } from "./context/Context";
 // import { useMarkers, useMarkerUpdate } from './context/ContextHook'
@@ -23,7 +24,6 @@ function App() {
           <SubmitMarkers />
           <SearchCollections />
         </main>
-        <LeafletGIBS />
       </Context>
     </>
   );
