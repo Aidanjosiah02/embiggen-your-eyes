@@ -1,4 +1,4 @@
-  import "dotenv/config";
+import "dotenv/config";
 import dotenv from "dotenv";
 import express from "express";
 import collectionsRouter from "./routes/collections.routes.js";
@@ -12,8 +12,7 @@ async function main() {
   const app = express();
   const PORT = process.env.PORT || 3000;
 
-
-   app.use(
+  app.use(
     cors({
       origin: "http://localhost:5173",
       methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
@@ -22,15 +21,13 @@ async function main() {
   );
   app.use(express.json());
 
-
   // Mount routes
   app.use("/api/collection", collectionsRouter);
   app.use("/api/markers", markersRouter);
 
   app.get("/health", (_req, res) => res.json({ ok: true }));
 
- 
-  //app.use("/", express.static(../frontend/build/index.html));
+  app.use("/", express.static("../frontend/dist"));
 
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
