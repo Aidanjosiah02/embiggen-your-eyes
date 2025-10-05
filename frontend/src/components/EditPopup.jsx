@@ -1,3 +1,5 @@
+// THIS COMPONENT IS CURRENTLY NOT BEING USED
+
 import { useState, useEffect } from 'react'
 import './styles/EditPopup.css'
 

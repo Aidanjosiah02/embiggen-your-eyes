@@ -1,12 +1,13 @@
 export default async function getCollection(query) {
     
     try {
-        const queryParams = new URLSearchParams();
+        // const queryParams = new URLSearchParams();
         console.log(query)
         if (query) {
-
-            console.log(queryParams.toString())
-            const response = await fetch(`http://localhost:3000/api/collection`, {
+            // const collectionId = query.collectionId
+            const name = query.name
+            // collectionId=${collectionId}&
+            const response = await fetch(`http://localhost:3000/api/collection?name=${name}`, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',

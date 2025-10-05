@@ -1,9 +1,8 @@
 /* MarkerOverlayBox.css */
 .marker-overlay-box {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  width: 250px;
+  bottom: 0;
+  width: 16rem;
   background: white;
   border: 1px solid #ccc;
   padding: 1rem;

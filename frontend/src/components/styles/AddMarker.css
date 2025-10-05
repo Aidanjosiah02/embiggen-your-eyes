@@ -1,4 +1,6 @@
-edit-popup {
+/* These CSS are currently USELESS right now */
+
+/* edit-popup {
     width: 300px;
 }
 
@@ -6,7 +8,7 @@ edit-popup {
     display: flex;
     flex-direction: column;
     gap: 15px;
-}
+} 
 
 .edit-popup label {
     font-weight: bold;
@@ -43,3 +45,4 @@ edit-popup {
 #cancel-btn:hover {
     background-color: #e53935;
 }
+ */

@@ -11,7 +11,7 @@ import {
 export function Context({ children }) {
   const [markers, setMarkers] = useState([]);
   const [collections, setCollections] = useState([]);
-  const [selectedCollection, setSelectedCollection] = useState({"id": "0", "name": "default"});
+  const [selectedCollection, setSelectedCollection] = useState({"id": null, "name": null});
 
   return (
     <MarkersContext.Provider value={markers}>
