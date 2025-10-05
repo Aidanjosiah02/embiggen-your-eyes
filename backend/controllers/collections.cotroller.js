@@ -23,16 +23,16 @@ export const getCollection = async (_req, res) => {
  * Body: { name: string, map: string }
  */
 export const saveCollection = async (req, res) => {
-  const { name, map } = req.body;
-
-  if (!name || !map) {
+  const { name } = req.body;
+console.log(name)
+  if (!name ) {
     return res.status(400).json({ error: "name and map are required" });
   }
 
   try {
     const { data, error } = await supabase
       .from("collections")
-      .insert([{ name}])
+      .insert([{name}])
       .select()
       .single();
 
