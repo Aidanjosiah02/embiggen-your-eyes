@@ -18,17 +18,10 @@ L.Icon.Default.mergeOptions({
 
 const CELESTIAL_TILE_CATALOG = [
   {
-    id: 'mercury-messenger-enhanced-color',
-    name: 'Mercury • MDIS Enhanced Color Global (665 m/px)',
-    url: 'https://trek.nasa.gov/tiles/Mercury/EQ/Mercury_MESSENGER_MDIS_Basemap_EnhancedColor_Mosaic_Global_665m/1.0.0/default/default028mm/{z}/{y}/{x}.jpg',
-    keywords: ['mercury', 'messenger', 'mdis', 'color'],
-    attribution: 'NASA/Johns Hopkins APL/CIW',
-  },
-  {
-    id: 'venus-magellan-left-look',
-    name: 'Venus • Magellan SAR Left-Look (75 m/px)',
-    url: 'https://trek.nasa.gov/tiles/Venus/EQ/Venus_Magellan_LeftLook_mosaic_global_75m/1.0.0/default/default028mm/{z}/{y}/{x}.png',
-    keywords: ['venus', 'magellan', 'sar', 'radar'],
+    id: 'mars-viking-mdim21',
+    name: 'Mars • Viking MDIM21 Color (232 m/px)',
+    url: 'https://trek.nasa.gov/tiles/Mars/EQ/Mars_Viking_MDIM21_ClrMosaic_global_232m/1.0.0/default/default028mm/{z}/{y}/{x}.jpg',
+    keywords: ['mars', 'viking', 'mdim', 'color'],
     attribution: 'NASA/JPL/USGS',
   },
   {
@@ -39,11 +32,18 @@ const CELESTIAL_TILE_CATALOG = [
     attribution: 'NASA/GSFC/Arizona State University',
   },
   {
-    id: 'mars-viking-mdim21',
-    name: 'Mars • Viking MDIM21 Color (232 m/px)',
-    url: 'https://trek.nasa.gov/tiles/Mars/EQ/Mars_Viking_MDIM21_ClrMosaic_global_232m/1.0.0/default/default028mm/{z}/{y}/{x}.jpg',
-    keywords: ['mars', 'viking', 'mdim', 'color'],
+    id: 'venus-magellan-left-look',
+    name: 'Venus • Magellan SAR Left-Look (75 m/px)',
+    url: 'https://trek.nasa.gov/tiles/Venus/EQ/Venus_Magellan_LeftLook_mosaic_global_75m/1.0.0/default/default028mm/{z}/{y}/{x}.png',
+    keywords: ['venus', 'magellan', 'sar', 'radar'],
     attribution: 'NASA/JPL/USGS',
+  },
+  {
+    id: 'mercury-messenger-enhanced-color',
+    name: 'Mercury • MDIS Enhanced Color Global (665 m/px)',
+    url: 'https://trek.nasa.gov/tiles/Mercury/EQ/Mercury_MESSENGER_MDIS_Basemap_EnhancedColor_Mosaic_Global_665m/1.0.0/default/default028mm/{z}/{y}/{x}.jpg',
+    keywords: ['mercury', 'messenger', 'mdis', 'color'],
+    attribution: 'NASA/Johns Hopkins APL/CIW',
   },
   {
     id: 'ceres-dawn-dlr-59ppd',
