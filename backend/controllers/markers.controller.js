@@ -34,15 +34,71 @@ export async function saveMarkers(req, res) {
   }
 }
 
-export async function getMarkersById(){
+export async function getMarkersById(req, res) {
+  const { id } = req.params; 
+  try {
+    const { data, error } = await supabase
+      .from("markers")
+      .select("*")
+      .eq("id", id)
+      .single(); 
 
+    if (error) throw error;
+
+    if (!data) {
+      return res.status(404).json({ message: "Marker not found" });
+    }
+
+    res.status(200).json({ data });
+  } catch (err) {
+    console.error("Error fetching marker:", err.message);
+    res.status(500).json({ ok: false, error: err.message });
+  }
 }
 
 export async function getMarkersByName(){
+const { name } = req.params; 
+  try {
+    const { data, error } = await supabase
+      .from("markers")
+      .select("*")
+      .eq("name", name)
+      .single(); 
 
+    if (error) throw error;
+
+    if (!data) {
+      return res.status(404).json({ message: "Marker not found" });
+    }
+
+    res.status(200).json({ data });
+  } catch (err) {
+    console.error("Error fetching marker:", err.message);
+    res.status(500).json({ ok: false, error: err.message });
+  }
 }
-export async function getMarkersByCollection(){
 
+
+export async function getMarkersByCollection(){
+const { collection_id } = req.params; 
+  try {
+    const { data, error } = await supabase
+      .from("markers")
+      .select("*")
+      .eq("collection_id", collection_id)
+      .single(); 
+
+    if (error) throw error;
+
+    if (!data) {
+      return res.status(404).json({ message: "Marker not found" });
+    }
+
+    res.status(200).json({ data });
+  } catch (err) {
+    console.error("Error fetching marker:", err.message);
+    res.status(500).json({ ok: false, error: err.message });
+  }
 }
 
 // controllers/markers.controller.js
@@ -56,7 +112,7 @@ export async function getMarkersByCollectionOrName(req, res) {
   try {
     let query = supabase.from("markers").select("*");
 
-    // ✅ correct column name is collection_id
+    
     if (collection && collection !== "null") {
       query = query.eq("collection_id", collection);
     }
@@ -67,7 +123,7 @@ export async function getMarkersByCollectionOrName(req, res) {
 
     const { data, error } = await query;
 
-    if (error) throw error; // ✅ throw the actual error object
+    if (error) throw error; 
 
     if (!data || data.length === 0) {
       return res.status(404).json({ ok: false, message: "No markers found" });
