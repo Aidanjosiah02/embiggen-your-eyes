@@ -1,7 +1,7 @@
 import "./styles/SearchEntry.css"
 import { useCollections, useCollectionsUpdate } from '../context/ContextHook'
 import { useMarkers, useMarkerUpdate } from '../context/ContextHook';
-import getQuery from "./getQuery";
+import getQuery from "./getQuery"; 
 
 export default function CollectionEntry({ collection }) {
 
@@ -9,18 +9,20 @@ export default function CollectionEntry({ collection }) {
     const setGlobalMarkers = useMarkerUpdate();
 
     const handleClick = async () => {
-        // Add collection to global state
         setGlobalCollections(prev => [...prev, collection]);
-
         try {
-            // Await the async query
             const newMarkers = await getQuery({ collectionId: collection.id, name: null });
+            const markers = Array.isArray(newMarkers?.data) ? newMarkers.data : [];
 
-            // Update markers only after data is resolved
-            setGlobalMarkers(prev => [...prev, ...newMarkers.data]);
+            // Only update markers if there are any
+            if (markers.length > 0) {
+                setGlobalMarkers(prev => [...prev, ...markers]);
+            } else {
+                console.warn(`No markers found in collection: ${collection.name}`);
+            }
+
         } catch (error) {
             console.error("Failed to fetch markers:", error);
-            // Optional: handle error in UI or with a toast
         }
     };
 

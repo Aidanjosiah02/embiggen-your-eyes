@@ -1,0 +1,26 @@
+/* MarkerOverlayBox.css */
+.marker-overlay-box {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 250px;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  border-radius: 6px;
+  pointer-events: auto;
+}
+
+.marker-overlay-box input,
+.marker-overlay-box textarea {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 0.3rem;
+}
+
+.marker-overlay-box .buttons {
+  display: flex;
+  justify-content: space-between;
+}
