@@ -1,27 +1,60 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import './styles/SearchColumn.css';
-import { useMarkerCollection, useMarkerCollectionUpdate } from "../context/Context.js";
 import SearchEntry from './SearchEntry'
 
 export default function SearchColumn() {
-    // Pulling the global marker collection & its setter
-    const markerCollection = useMarkerCollection()              // Currently doing nothing
-    const setMarkerCollection = useMarkerCollectionUpdate()
 
-    // Convert all the markers into UI entries
-    const entries = markerCollection.map(each => {
-        return <SearchEntry title="" image="" description="" /> // DOES NOTHING YET
-    })
+    // markerQuery state
+    const [markerQuery, setMarkerQuery] = useState("")
 
-    // query state
-    const [query, setQuery] = useState("")
+    // local results state
+    const [results, setResults] = useState([])
+
 
     // handle form submit
     const handleSearch = (e) => {
         e.preventDefault();
-        console.log('Searching for:', query);
-        // Contact the back end here..................................
+
+        // Empty markerQuery
+        if (!markerQuery.trim()) {
+            setResults([]);
+            return;
+        }
+
+        console.log("Searching for: ", markerQuery)
+
+
+        // Score the search relevanct
+        const normQuery = markerQuery.toLowerCase();
+        const scored = results.map((marker) => {
+                const name = marker.name.toLowerCase();
+                let score = 0;
+
+                if (name === normQuery) 
+                    score = 3;
+                else if (name.startsWith(normQuery)) 
+                    score = 2;
+                else if (name.includes(normQuery)) 
+                    score = 1;
+
+                return { ...marker, score };
+            }
+        ).filter(marker => marker.score > 0).sort((a, b) => b.score - a.score);
+        setResults(scored);
+
+        console.log("Search results: " + results)
+        setMarkerQuery(""); // Clear input
     }
+
+    // Dummy function
+    function testFunc(entry) {
+        console.log("Recieved from entry " + entry)
+    }
+
+    // Convert all the markers into UI entries
+    const entries = results.map(marker => {
+        return <SearchEntry key={marker.id} marker={marker} onClick={testFunc} />
+    })
 
     return (
         <div className="search-bar">
@@ -29,14 +62,21 @@ export default function SearchColumn() {
             <form className="search-controls" onSubmit={handleSearch}>
                 <input
                     type="text"
-                    value={query}
-                    placeholder="Enter search..."
-                    onChange={(e) => setQuery(e.target.value)}>
+                    value={markerQuery}
+                    placeholder="Enter marker name..."
+                    onChange={(e) => setMarkerQuery(e.target.value)}>
                 </input>
+                {/* <input
+                    type="text"
+                    value={collectionQuery}
+                    placeholder="Enter collection name..."
+                    onChange={(e) => setCollectionQuery(e.target.value)}>
+                </input> */}
                 <button type="submit">Find</button>
             </form>
             <div className="search-results">
-                {query.length !== 0 && entries}
+                {entries}
+                {!markerQuery && <h2>Please enter in the search bar</h2>}
             </div>
         </div>
     )

@@ -1,9 +1,22 @@
+// routes/markers.route.js
 import { Router } from "express";
-import { getMarkers, saveMarkers } from "../controllers/markers.controller.js";
+import {
+  getMarkers,
+  saveMarkers,
+  getMarkersByCollectionOrName,
+  getMarkersById,
+  getMarkersByCollection,
+  getMarkersByName,
+} from "../controllers/markers.controller.js";
 
 const markersRouter = Router();
 
-markersRouter.get("/getMarkers", getMarkers); //Get all markers from database using collection name
-markersRouter.post("/saveMarkers", saveMarkers); //Save all markers from frontend in database
+// existing routes
+markersRouter.post("/saveMarkers", saveMarkers); // save markers
+markersRouter.get("/getMarkers", getMarkersByCollectionOrName);
+markersRouter.get("/getMarkers/:id", getMarkersById);
+markersRouter.get("/getMarkers/colllection/:collectionId", getMarkersByCollection);
+markersRouter.get("/getMarkers/name/:name", getMarkersByName);
+
 
 export default markersRouter;

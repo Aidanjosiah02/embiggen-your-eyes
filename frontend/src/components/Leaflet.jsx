@@ -4,6 +4,7 @@ import L from 'leaflet';
 import './styles/leaflet.css';
 import { useState } from 'react';
 import MapLayers from './MapLayers.jsx'; // Adjust path as needed
+import AddMarker from './AddMarker.jsx';
 
 // Setup default marker icon
 delete L.Icon.Default.prototype._getIconUrl;
@@ -33,6 +34,7 @@ function Leaflet() {
         <MapLayers layerDetails={layerDetails} />
       </LayersControl>
       {/* <SearchToggleButton setShowSearch={setShowSearch} /> */}
+      <AddMarker />
     </MapContainer>
   );
 }

@@ -1,0 +1,45 @@
+edit-popup {
+    width: 300px;
+}
+
+.edit-popup form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.edit-popup label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.edit-popup input, .edit-popup textarea {
+    padding: 8px;
+    font-size: 1rem;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.edit-popup button {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-popup button:hover {
+    background-color: #45a049;
+}
+
+#cancel-btn {
+    background-color: #f44336;
+}
+
+#cancel-btn:hover {
+    background-color: #e53935;
+}
