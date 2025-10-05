@@ -1,13 +1,10 @@
 export default async function getQuery(query) {
     
     try {
-        const queryParams = new URLSearchParams();
-        console.log(query)
+        // const queryParams = new URLSearchParams();
         if (query) {
             const collectionId = query.collectionId
             const name = query.name
-
-            console.log(queryParams.toString())
 
             const response = await fetch(`http://localhost:3000/api/markers/getMarkers?collectionId=${collectionId}&name=${name}`, {
                 method: 'GET',
@@ -16,7 +13,7 @@ export default async function getQuery(query) {
                 },
             });
 
-            console.log(response)
+            // console.log(response)
 
             if (!response.ok) {
                 throw new Error(`Server error: ${response.statusText}`);
