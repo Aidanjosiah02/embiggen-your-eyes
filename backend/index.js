@@ -30,7 +30,7 @@ async function main() {
   app.get("/health", (_req, res) => res.json({ ok: true }));
 
  
-
+  //app.use("/", express.static(../frontend/build/index.html));
 
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

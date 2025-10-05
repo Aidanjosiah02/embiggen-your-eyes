@@ -1,11 +1,11 @@
 import { MapContainer, Marker, Popup, LayersControl } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import './styles/leaflet.css';
+import '../../css/app/Leaflet.css';
 import { useState } from 'react';
-import MapLayers from './MapLayers.jsx'; // Adjust path as needed
-import AddMarker from './AddMarker.jsx';
-import MarkerOverlayBox from './MarkerOverlayBox.jsx';
+import MapLayers from '../leaflet/MapLayers.jsx';
+import AddMarker from '../leaflet/AddMarker.jsx';
+import MarkerOverlayBox from '../leaflet/MarkerOverlayBox.jsx';
 
 // Setup default marker icon
 delete L.Icon.Default.prototype._getIconUrl;

@@ -1,6 +1,6 @@
-import { useMarkerUpdate } from '../context/ContextHook';
+import { useMarkerUpdate } from '../../context/ContextHook';
 import { useEffect, useState } from 'react';
-import './styles/MarkerOverlayBox.css';
+import '../../css/leaflet/MarkerOverlayBox.css';
 
 function MarkerOverlayBox({ selectedMarker, setSelectedMarker, isEditing, setIsEditing }) {
   const setMarkers = useMarkerUpdate();

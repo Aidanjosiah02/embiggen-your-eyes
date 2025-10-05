@@ -1,5 +1,5 @@
-import { useMarkers, useMarkerUpdate } from '../context/ContextHook.js';
-import sendMarkers from './sendMarkers.js';
+import { useMarkers, useMarkerUpdate } from '../../context/ContextHook.js';
+import sendMarkers from '../../js/SendMarkers.js';
 
 export default function SubmitMarkers() {
     const markers = useMarkers()

@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import Leaflet from './components/Leaflet'
-import SearchColumn from './components/SearchColumn'
+import Leaflet from './components/app/Leaflet.jsx'
+import SearchMarkers from './components/app/SearchMarkers.jsx'
 import { Context } from './context/Context'
 // import { useMarkers, useMarkerUpdate } from './context/ContextHook'
 // import sendMarkers from './components/sendMarkers.js'
-import Header from './components/Header.jsx'
-import SubmitMarkers from './components/SubmitMarkers.jsx'
-import SearchCollection from './components/SearchCollection.jsx'
+import Header from './components/app/Header.jsx'
+import SubmitMarkers from './components/app/SubmitMarkers.jsx'
+import SearchCollections from './components/app/SearchCollections.jsx'
 
 import './App.css'
 
@@ -20,9 +20,9 @@ function App() {
         <Header />
         <main className='main'>
           <Leaflet />
-          <SearchColumn />
+          <SearchMarkers />
           <SubmitMarkers />
-          <SearchCollection />
+          <SearchCollections />
         </main>
       </Context>
     </>
