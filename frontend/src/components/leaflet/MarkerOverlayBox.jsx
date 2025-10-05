@@ -42,6 +42,17 @@ function MarkerOverlayBox({ selectedMarker, setSelectedMarker, isEditing, setIsE
     );
     setSelectedMarker(null);
     setIsEditing(false);
+  //   try {
+  //     // Also delete from backend if it has an ID
+  //     if (selectedMarker.id) {
+  //       fetch(`/api/markers/deleteMarkers`, {
+  //         method: 'POST',
+  //         body
+  //       });
+  //     }
+  //   } catch (error) {
+  //     console.error("Failed to delete marker from backend:", error);
+  //   }
   }
 
   return (

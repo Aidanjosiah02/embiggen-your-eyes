@@ -43,6 +43,7 @@ function App() {
           </div>
         </aside>
       </main>
+      {/* <LeafletGIBS /> */}
     </Context>
   )
 }

@@ -1,15 +1,17 @@
 .search-entry {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 1rem;
   cursor: pointer;
-  padding: 10px;
+  padding: 0.4rem;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 0.5rem;
+  margin: 0.2rem;
   box-shadow: var(--shadow);
   transition: transform .08s ease, box-shadow .2s ease, border-color .2s ease;
   color: var(--text);
+  background-color: #8939c6;
 }
 .search-entry:hover {
   transform: translateY(-1px);
@@ -17,14 +19,14 @@
   box-shadow: 0 0 0 3px rgba(122,90,248,.18);
 }
 .search-image {
-  width: 56px;
-  height: 56px;
+  width: 2rem;
+  height: 2rem;
   object-fit: cover;
   border-radius: 10px;
   border: 1px solid var(--border);
 }
 .search-entry h3 {
-  margin: 0;
   font-size: 1rem;
   color: var(--text);
+  margin: auto;
 }

@@ -28,7 +28,7 @@ export default function CollectionEntry({ collection }) {
 
     return (
         <div className="search-entry" onClick={handleClick}>
-            <img className="search-image" src={collection.id} alt="Search Image" />
+            {/* <img className="search-image" src={collection.id} alt="Search Image" /> */}
             <h3>{collection.name}</h3>
         </div>
     );

@@ -10,7 +10,6 @@
   height: calc(100vh - var(--header-h));
   padding: var(--gap);
   margin: 0 auto;
-  max-width: 1600px;
 }
 
 /* Map container */
