@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import './styles/SearchColumn.css';
 import SearchEntry from './SearchEntry'
 import { useSelectedCollection } from "../context/ContextHook";
@@ -8,11 +8,10 @@ export default function SearchColumn() {
     // Global collections state
     const selectedCollection = useSelectedCollection();
 
-    // markerQuery state
+    // local states
     const [markerQuery, setMarkerQuery] = useState("")
-
-    // local results state
     const [results, setResults] = useState([])
+    const [searched, setSearched] = useState(false)
 
     // handle form submit
     const handleSearch = async (e) => {
@@ -21,6 +20,7 @@ export default function SearchColumn() {
         // Empty markerQuery
         if (!markerQuery.trim()) {
             setResults([]);
+            setSearched(true);
             return;
         }
 
@@ -63,11 +63,11 @@ export default function SearchColumn() {
             console.log("Scored search from collection: " + scored)
 
             setResults(scored);
+            setSearched(true)
         }
         catch (error) {
             console.error("Error fetching markers:", error);
         }
-        setMarkerQuery(""); // Clear input
     }
 
     // Dummy function
@@ -94,8 +94,8 @@ export default function SearchColumn() {
             </form>
             <div className="search-results">
                 {entries}
-                {!markerQuery && <h2>Please enter in the search bar</h2>}
-                {results.length === 0 && <h2>No results found</h2>}
+                {searched && !markerQuery && <h2 className="please-enter">Please enter in the search bar</h2>}
+                {searched && markerQuery && results.length === 0 && <h2 className="no-result">No results found</h2>}
             </div>
         </div>
     )
