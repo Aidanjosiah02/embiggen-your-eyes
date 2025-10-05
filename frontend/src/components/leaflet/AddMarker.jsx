@@ -1,7 +1,7 @@
 import { Marker, useMapEvents, useMap } from 'react-leaflet';
-import { useMarkers, useMarkerUpdate, useSelectedCollection } from '../context/ContextHook.js';
+import { useMarkers, useMarkerUpdate, useSelectedCollection } from '../../context/ContextHook.js';
 import { useEffect } from 'react';
-import "./styles/AddMarker.css";
+import "../../css/leaflet/AddMarker.css";
 
 function AddMarker({ selectedMarker, setSelectedMarker, isEditing }) {
   const markers = useMarkers();

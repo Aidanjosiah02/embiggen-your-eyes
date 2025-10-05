@@ -1,6 +1,6 @@
-import { useCollections, useCollectionsUpdate, useMarkerUpdate, useSelectedCollectionUpdate, useSelectedCollection } from '../context/ContextHook';
-import './styles/SearchColumn.css';
-import './styles/SelectedCollection.css'
+import { useCollections, useCollectionsUpdate, useMarkerUpdate, useSelectedCollectionUpdate, useSelectedCollection } from '../../context/ContextHook';
+import '../../css/app/SearchMarkers.css';
+import '../../css/search/SelectedCollection.css'
 
 export default function SelectedCollections() {
     // Get global states and setters

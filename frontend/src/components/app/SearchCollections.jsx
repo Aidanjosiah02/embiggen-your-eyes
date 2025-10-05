@@ -1,12 +1,12 @@
 import { useState } from "react";
-import './styles/SearchColumn.css';
-import SearchEntry from './SearchEntry';
-import sendCollection from "./sendCollection";
-import CollectionEntry from './CollectionEntry'
-import getCollection from './getCollection.js'
-import SelectedCollections from "./SelectedCollections.jsx";
+import '../../css/app/SearchMarkers.css';
+import SearchEntry from '../search/SearchEntry';
+import sendCollection from "../../js/sendCollection.js";
+import CollectionEntry from '../search/CollectionEntry'
+import getCollection from '../../js/getCollection.js'
+import SelectedCollections from "../search/SelectedCollections.jsx";
 
-export default function SearchCollection() {
+export default function SearchCollections() {
   // Global state
   const [collectionName, setCollectionName] = useState('');
   const [collections, setCollections] = useState([]);

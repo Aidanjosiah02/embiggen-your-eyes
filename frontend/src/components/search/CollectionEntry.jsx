@@ -1,7 +1,7 @@
-import "./styles/SearchEntry.css"
-import { useCollections, useCollectionsUpdate } from '../context/ContextHook'
-import { useMarkers, useMarkerUpdate } from '../context/ContextHook';
-import getQuery from "./getQuery"; 
+import "../../css/search/SearchEntry.css"
+import { useCollections, useCollectionsUpdate } from '../../context/ContextHook'
+import { useMarkers, useMarkerUpdate } from '../../context/ContextHook';
+import getQuery from '../../js/getQuery.js'; 
 
 export default function CollectionEntry({ collection }) {
 

@@ -1,5 +1,5 @@
-import "./styles/SearchEntry.css"
-import { useMarkers, useMarkerUpdate } from '../context/ContextHook'
+import "../../css/search/SearchEntry.css"
+import { useMarkers, useMarkerUpdate } from '../../context/ContextHook'
 
 export default function SearchEntry({marker}) {
 

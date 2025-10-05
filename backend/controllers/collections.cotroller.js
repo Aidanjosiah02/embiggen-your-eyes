@@ -7,7 +7,15 @@ import { supabase } from "../config/supabase.js";
  */
 export const getCollection = async (req, res) => {
   try {
-    const { data, error } = await supabase.from("collections").select("*");
+    // const { data, error } = await supabase.from("collections").select("*");
+    const collectionName = req.query;
+    console.log(await supabase.from("collections").select("*").like("name", "%" + collectionName.name + "%"));
+    //if (await supabase.from("collections").select("*").like("name", "%" + collectionName.name + "%") == []){
+    //const { data, error } = await supabase.from("collections").select("*");
+    //}
+    //else{
+    const { data, error } = await supabase.from("collections").select("*").like("name", "%" + collectionName.name + "%");
+    //}
 
     if (error) throw error;
 

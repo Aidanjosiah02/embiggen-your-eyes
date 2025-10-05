@@ -1,10 +1,10 @@
 import { useState } from "react";
-import './styles/SearchColumn.css';
-import SearchEntry from './SearchEntry'
-import { useSelectedCollection } from "../context/ContextHook";
-import getQuery from "./getQuery";
+import '../../css/app/SearchMarkers.css';
+import SearchEntry from '../search/SearchEntry'
+import { useSelectedCollection } from "../../context/ContextHook";
+import getQuery from "../../js/getQuery.js";
 
-export default function SearchColumn() {
+export default function SearchMarker() {
     // Global collections state
     const selectedCollection = useSelectedCollection();
 
