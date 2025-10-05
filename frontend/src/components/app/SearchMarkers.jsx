@@ -26,7 +26,7 @@ export default function SearchMarker() {
 
         console.log("Collection searching for: ", markerQuery)
 
-        const normQuery = markerQuery.toLowerCase();
+        const normQuery = markerQuery;
         try {
             // Get markers from collections
             const newObject = await getQuery({ collectionId: selectedCollection.id, name: normQuery });
@@ -41,7 +41,7 @@ export default function SearchMarker() {
 
             // Score the search relevancy
             const scored = newMarkers.map((marker) => {
-                const name = marker.name.toLowerCase();
+                const name = marker.name;
                 let score = 0;
 
                 if (name === normQuery)

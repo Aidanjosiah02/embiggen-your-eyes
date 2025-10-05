@@ -2,7 +2,7 @@ import { useState } from "react";
 import '../../css/app/SearchMarkers.css';
 import SearchEntry from '../search/SearchEntry';
 import sendCollection from "../../js/sendCollection.js";
-import CollectionEntry from '../search/CollectionEntry'
+import CollectionEntry from '../search/CollectionEntry.jsx'
 import getCollection from '../../js/getCollection.js'
 import SelectedCollections from "../search/SelectedCollections.jsx";
 
@@ -10,9 +10,6 @@ export default function SearchCollections() {
   // Global state
   const [collectionName, setCollectionName] = useState('');
   const [collections, setCollections] = useState([]);
-
-  // Local state
-  const [searched, setSearched] = useState(false)
 
   // handle create collection
   async function createCollection(e) {
@@ -33,15 +30,17 @@ export default function SearchCollections() {
   async function handleSearch(e) {
     e.preventDefault();
 
+    let normQuery = "*";
     if (!collectionName.trim()) {
-      setSearched(true);
-      return;
+      normQuery = "*";
+      console.log("Searching for: ", normQuery);
+    }
+    else {
+      normQuery = collectionName;
     }
 
-    const normQuery = collectionName.toLowerCase();
-
     console.log("Searching for: ", normQuery);
-
+    
     try {
       const result = await getCollection({ collection: null, name: normQuery });
 
@@ -60,7 +59,6 @@ export default function SearchCollections() {
       // .sort((a, b) => b.score - a.score);
 
       setCollections(result); // Update state to trigger re-render through entries
-      setSearched(true)
     } catch (error) {
       console.error("Error fetching collection:", error);
     }
@@ -91,7 +89,7 @@ export default function SearchCollections() {
 
       <div className="search-results">
         {entries}
-        {searched && !collectionName && <h2 className="please-enter">Please enter in the search bar</h2>}
+        {/* {searched && !collectionName && <h2 className="please-enter">Please enter in the search bar</h2>} */}
       </div>
       <SelectedCollections />
     </div>
