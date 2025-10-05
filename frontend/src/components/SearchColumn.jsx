@@ -4,9 +4,9 @@ import SearchEntry from './SearchEntry'
 
 export default function SearchColumn() {
 
-    // query state
-    const [query, setQuery] = useState("")
-    const [queryEmpty, setQueryEmpty] = useState(false)
+    // markerQuery state
+    const [markerQuery, setMarkerQuery] = useState("")
+    const [collectionQuery, setCollectionQuery] = useState("")
 
     // local results state
     const [results, setResults] = useState([])
@@ -16,19 +16,17 @@ export default function SearchColumn() {
     const handleSearch = (e) => {
         e.preventDefault();
 
-        // Empty query
-        if (query.trim() === "") {
-            setQueryEmpty(true);
+        // Empty markerQuery
+        if (!markerQuery.trim()) {
             setResults([]);
             return;
         }
 
-        setQueryEmpty(false);
-        console.log("Searching for: ", query)
+        console.log("Searching for: ", markerQuery)
 
 
         // Score the search relevanct
-        const normQuery = query.toLowerCase();
+        const normQuery = markerQuery.toLowerCase();
         const scored = results.map((marker) => {
                 const name = marker.name.toLowerCase();
                 let score = 0;
@@ -46,7 +44,7 @@ export default function SearchColumn() {
         setResults(scored);
 
         console.log("Search results: " + results)
-        setQuery(""); // Clear input
+        setMarkerQuery(""); // Clear input
     }
 
     // Dummy function
@@ -65,15 +63,21 @@ export default function SearchColumn() {
             <form className="search-controls" onSubmit={handleSearch}>
                 <input
                     type="text"
-                    value={query}
-                    placeholder="Enter search..."
-                    onChange={(e) => setQuery(e.target.value)}>
+                    value={markerQuery}
+                    placeholder="Enter marker name..."
+                    onChange={(e) => setMarkerQuery(e.target.value)}>
                 </input>
+                {/* <input
+                    type="text"
+                    value={collectionQuery}
+                    placeholder="Enter collection name..."
+                    onChange={(e) => setCollectionQuery(e.target.value)}>
+                </input> */}
                 <button type="submit">Find</button>
             </form>
             <div className="search-results">
                 {entries}
-                {queryEmpty && <h2>Please enter in the search bar</h2>}
+                {(!markerQuery && !collectionQuery) && <h2>Please enter in the search bar</h2>}
             </div>
         </div>
     )

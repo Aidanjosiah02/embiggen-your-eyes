@@ -1,15 +1,25 @@
 import { Marker, Popup, useMapEvents, useMap } from 'react-leaflet';
 import { useMarkers, useMarkerUpdate } from '../context/ContextHook.js';
+import { useRef, useEffect } from 'react';
 
 function AddMarker() {
   const markers = useMarkers();
   const setMarkers = useMarkerUpdate();
   const map = useMap();
 
+  const markerRef = useRef(null);
+
   useMapEvents({
     click(event) {
-      console.log(event)
-      const newMarker = {lat: event.latlng.lat, lng: event.latlng.lng, name: "somename", description: "somedescription", zoom: map.getZoom(), collection: "99b3c955-1f43-444f-9e8f-67d1d48ad47f"};
+      console.log(event);
+      const newMarker = {
+        lat: event.latlng.lat,
+        lng: event.latlng.lng,
+        name: "somename",
+        description: "somedescription",
+        zoom: map.getZoom(),
+        collection: "99b3c955-1f43-444f-9e8f-67d1d48ad47f"
+      };
       setMarkers((prevMarkers) => [...prevMarkers, newMarker]);
     },
   });
@@ -18,11 +28,16 @@ function AddMarker() {
 
   return markers.map((position, idx) => (
     <Marker
-      position={[position.lat, position.lng]}
-      eventHandlers={{ click: () => map.flyTo([position.lat, position.lng], map.getZoom() + 1) }}
       key={idx}
+      position={[position.lat, position.lng]}
+      eventHandlers={{ 
+        click: () => map.flyTo([position.lat, position.lng], map.getZoom() + 1) 
+      }}
     >
-      <Popup>You are here</Popup>
+      <Popup>
+        <h3>{position.name}</h3>
+        <p>{position.description}</p>
+      </Popup>
     </Marker>
   ));
 }

@@ -1,12 +1,12 @@
-async function sendCollection(collection) {
+async function sendCollection(name) {
     try {
-        console.log('Sending collection to server:', collection);
-        const response = await fetch('http://localhost:3000/api/markers/saveCollection', {
+        console.log('Sending collection to server:', name);
+        const response = await fetch('http://localhost:3000/api/collection', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(collection),
+            body: JSON.stringify({name}),
         });
         console.log('Server response:', response);
         if (!response.ok) {
