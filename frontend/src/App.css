@@ -163,3 +163,10 @@ button { white-space: nowrap; }
     flex: 1 1 100%;               /* ★ NEW: buttons go full width on small screens */
   }
 }
+
+
+.search-controls div {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}

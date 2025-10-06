@@ -3,7 +3,7 @@ export default async function getQuery(query) {
     try {
         // const queryParams = new URLSearchParams();
         if (query) {
-            const collectionId = query.collectionId
+            const collectionId = query.collection || query.collectionId;
             const name = query.name
 
             const response = await fetch(`http://localhost:3000/api/markers/getMarkers?collectionId=${collectionId}&name=${name}`, {
@@ -19,7 +19,7 @@ export default async function getQuery(query) {
             }
 
             const markers = await response.json(); // Should be an array
-            return markers;
+            return markers.data;
         } 
     }
     

@@ -1,0 +1,31 @@
+/* Minimal — sidebar layout handled in App.css */
+.please-enter,
+.no-result {
+  color: var(--danger);
+  margin: 0.5rem 0;
+}
+
+.search-results {
+  background-color: azure;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.entries {
+  position: relative;
+  overflow: auto;
+}
+
+.marker-entries {
+  border-bottom: 1px solid var(--border);
+}
+
+.collection-entries {
+  border-bottom: 1px solid var(--border);
+  background-color: cyan;
+}
+
+.search-bar {
+  height:fit-content;
+}

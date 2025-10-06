@@ -115,14 +115,14 @@ function Leaflet() {
       <AddMarker 
         selectedMarker={selectedMarker}
         setSelectedMarker={setSelectedMarker}
-        isEditing={isEditing} // ✅ Pass isEditing
+        isEditing={isEditing}
       />
 
       <MarkerOverlayBox 
         selectedMarker={selectedMarker}
         setSelectedMarker={setSelectedMarker}
         isEditing={isEditing}
-        setIsEditing={setIsEditing} // ✅ Let MarkerOverlayBox control editing state
+        setIsEditing={setIsEditing}
       />
     </MapContainer>
   );

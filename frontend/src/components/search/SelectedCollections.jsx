@@ -1,5 +1,5 @@
 import { useCollections, useCollectionsUpdate, useMarkerUpdate, useSelectedCollectionUpdate, useSelectedCollection } from '../../context/ContextHook';
-import '../../css/app/SearchMarkers.css';
+import '../../css/app/SearchBox.css';
 import '../../css/search/SelectedCollection.css'
 
 export default function SelectedCollections() {
