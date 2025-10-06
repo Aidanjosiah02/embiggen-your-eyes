@@ -20,4 +20,5 @@ npm install
 npm run dev
 ```
 Access http://localhost:3000/
+
 A .env file with the appropriate key is included in the backend for easier use temporarily. 
