@@ -11,7 +11,7 @@ export default function CollectionEntry({ collection }) {
     const handleClick = async () => {
         setGlobalCollections(prev => [...prev, collection]);
         try {
-            const newMarkers = await getQuery({ collection: collection.id, name: null });
+            const newMarkers = await getQuery({ collectionId: collection.id, name: null });
             const markers = Array.isArray(newMarkers?.data) ? newMarkers.data : [];
 
             // Only update markers if there are any
