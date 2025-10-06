@@ -19,8 +19,8 @@ function App() {
       <Context>
         <Header />
         <main className='main'>
-          <Leaflet />
           <SearchMarkers />
+          <Leaflet />
           <SubmitMarkers />
           <SearchCollections />
         </main>
