@@ -1,20 +1,12 @@
 .search-bar {
   flex: 0 0 20%;
-  height: 95vh;
-
-  background-color: gray;
-  color: white;
+  
   display: flex;
   flex-direction: column;
-  padding: 1rem;
-  box-sizing: border-box;
-  box-shadow: #444 0px 2px 4px;
 }
 
 .search-controls {
   display: flex;
-  gap: .5rem;
-  margin-bottom: 1rem;
 }
 
 .search-controls input {
@@ -24,12 +16,15 @@
   border-radius: 4px;
 }
 
-.search-controls input::placeholder {
-  color: #e3e3e3;
+
+.please-enter,
+.no-result {
+  color: var(--danger);
+  margin: 0.5rem 0;
 }
 
 .search-results {
-  max-height: 90vh;
-  overflow-y: auto;
-  padding: 0.5rem;
+  height: 200vh;
+  max-height: 32rem;
+  overflow: auto;
 }

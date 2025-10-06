@@ -40,7 +40,7 @@ export default function SearchCollections() {
     }
 
     console.log("Searching for: ", normQuery);
-    
+
     try {
       const result = await getCollection({ collection: null, name: normQuery });
 
@@ -77,21 +77,23 @@ export default function SearchCollections() {
   return (
     <div className="search-bar">
       <form className="search-controls" onSubmit={handleSearch}>
-        <input
-          type="text"
-          value={collectionName}
-          onChange={(e) => setCollectionName(e.target.value)}
-          placeholder="Enter collection name..."
-        />
-        <button type="submit">Fetch Collection</button>
-        <button onClick={createCollection}>Create Collection</button>
+        <div>
+          <input
+            type="text"
+            value={collectionName}
+            onChange={(e) => setCollectionName(e.target.value)}
+            placeholder="Enter collection name..."
+            style={{ margin: "8px 12px 8px 12px" }}
+          />
+          <button type="submit">Fetch Collection</button>
+          <button onClick={createCollection}>Create Collection</button>
+        </div>
       </form>
 
       <div className="search-results">
         {entries}
-        {/* {searched && !collectionName && <h2 className="please-enter">Please enter in the search bar</h2>} */}
       </div>
       <SelectedCollections />
     </div>
-  ); 
+  );
 }

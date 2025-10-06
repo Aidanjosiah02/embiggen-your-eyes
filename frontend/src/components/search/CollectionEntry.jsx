@@ -1,6 +1,6 @@
 import "../../css/search/SearchEntry.css"
-import { useCollections, useCollectionsUpdate } from '../../context/ContextHook'
-import { useMarkers, useMarkerUpdate } from '../../context/ContextHook';
+import { useCollectionsUpdate } from '../../context/ContextHook'
+import { useMarkerUpdate } from '../../context/ContextHook';
 import getQuery from '../../js/getQuery.js'; 
 
 export default function CollectionEntry({ collection }) {
@@ -28,7 +28,6 @@ export default function CollectionEntry({ collection }) {
 
     return (
         <div className="search-entry" onClick={handleClick}>
-            <img className="search-image" src={collection.id} alt="Search Image" />
             <h3>{collection.name}</h3>
         </div>
     );
