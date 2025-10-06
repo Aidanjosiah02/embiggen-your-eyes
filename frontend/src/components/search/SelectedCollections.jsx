@@ -34,7 +34,7 @@ export default function SelectedCollections() {
 
     // React component
     return (
-        <div className="selected-collections">
+        <div className="selected-collections results-scroll">
             <div className='select-collection-container'>
                 <h4>Selected Collections</h4>
                 <button onClick={clearAll}>Clear All</button>
@@ -43,8 +43,10 @@ export default function SelectedCollections() {
                 {collections.map((collection) => (
                     <li key={collection.id} className="collection-item">
                         <span>{collection.name}</span>
-                        <button onClick={() => handleRemove(collection.id)}>Remove</button>
-                        <button onClick={() => handleEdit(collection)}>Edit</button>
+                        <div className="row-actions">
+                            <button className='button--ghost' onClick={() => handleRemove(collection.id)}>Remove</button>
+                            <button className='button--danger' onClick={() => handleEdit(collection)}>Edit</button>
+                        </div>
                     </li>
                 ))}
             </ul>

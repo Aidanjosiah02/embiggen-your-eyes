@@ -1,25 +1,49 @@
-/* MarkerOverlayBox.css */
 .marker-overlay-box {
   position: absolute;
-  bottom: 0;
-  width: 16rem;
-  background: white;
-  border: 1px solid #ccc;
-  padding: 1rem;
+  bottom: 14px;
+  left: 14px;
+  width: min(340px, 90vw);
+  background: rgba(20, 26, 43, 0.92);
+  border: 1px solid var(--border);
+  padding: 12px;
   z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  border-radius: 6px;
+  box-shadow: var(--shadow);
+  border-radius: 14px;
   pointer-events: auto;
+  color: var(--text);
+  backdrop-filter: blur(4px);
+}
+
+.marker-overlay-box h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.05rem;
+}
+
+.marker-overlay-box label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 6px 0 4px;
 }
 
 .marker-overlay-box input,
 .marker-overlay-box textarea {
-  width: 100%;
-  margin-bottom: 0.5rem;
-  padding: 0.3rem;
+  margin-bottom: 6px;
 }
 
 .marker-overlay-box .buttons {
   display: flex;
-  justify-content: space-between;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.marker-overlay-box .buttons button:nth-child(2) {
+  background: linear-gradient(180deg, var(--danger), #c44646);
+  border-color: #c44646;
+}
+.marker-overlay-box .buttons button:nth-child(3) {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+  box-shadow: none;
 }
