@@ -1,6 +1,6 @@
 # GalaxSight
 
-**GalaxSight** is a web-based tool developed for the NASA Space Apps Challenge. It provides an intuitive and powerful interface to explore NASA’s massive astronomical images. With GalaxSight, users can search, annotate, and share specific regions of interest in space imagery — making space more accessible for students, researchers, and educators.
+**GalaxSight** is a web-based tool developed for the NASA Space Apps Challenge. It provides an intuitive and powerful interface to explore NASA’s massive astronomical images. With GalaxSight, users can search, annotate, and share specific regions of interest in space imagery, making space more accessible for students, researchers, and educators.
 
 ## What It Does
 
@@ -20,3 +20,4 @@ npm install
 npm run dev
 ```
 Access http://localhost:3000/
+A .env file with the appropriate key is included in the backend for easier use temporarily. 
